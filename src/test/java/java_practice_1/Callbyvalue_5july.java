@@ -1,7 +1,7 @@
 package java_practice_1;
 public class Callbyvalue_5july {
 int x=50;  
-void change(int x){
+public void change(int x){
 System.out.println("before change inside method (argument) : " + x);	
 x=x+100;//changes will be in the local variable only 
 System.out.println("after change inside method (argument) : " + x);
