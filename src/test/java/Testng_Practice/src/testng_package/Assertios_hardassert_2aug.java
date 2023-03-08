@@ -15,6 +15,7 @@ driver.manage().window().maximize();
 String actualtitle = driver.getTitle();	
 String expectedtitle = "LinkedIn Login, Sign in | LinkedIn";
 Assert.assertEquals(actualtitle,expectedtitle);
+
 Thread.sleep(2000);
 driver.close();
 }

@@ -8,6 +8,7 @@ public class Encapsulation_1_10july {
 		return a;
 	}
 	public void givevalue(int a) {    //renamed auto created setter method
+
 		this.a = a;
 	}
 	

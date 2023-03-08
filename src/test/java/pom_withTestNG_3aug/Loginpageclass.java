@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 public class Loginpageclass {
 	WebDriver driver;
 	public Loginpageclass(WebDriver driver) {
+
 		this.driver=driver;
 	}
 By logo= By.xpath("//*[@id=\"divLogo\"]/img");	

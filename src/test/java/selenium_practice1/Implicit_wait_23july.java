@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Implicit_wait_23july {
 //Implicit wait	
 public static void main(String[] args) {
-System.setProperty("webdriver.chrome.driver","D:\\Deepak files\\Hybrid Framework Deepak\\Jars or Dependencies\\chromedriver.exe");	
+System.setProperty("webdriver.chrome.driver","D:\\Deepak files\\Hybrid Framework Qshore\\Jars or Dependencies\\chromedriver.exe");
 WebDriver driver=new ChromeDriver();	
 driver.get("https://chercher.tech/practice/implicit-wait-example");
 driver.manage().window().maximize();

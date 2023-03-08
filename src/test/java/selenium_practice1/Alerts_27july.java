@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Alerts_27july {
 //Handling Alerts and Pop-Ups	
 public static void main(String[] args) throws Exception {
-	System.setProperty("webdriver.chrome.driver","D:\\Deepak files\\Hybrid Framework Deepak\\Jars or Dependencies\\chromedriver.exe");	
+	System.setProperty("webdriver.chrome.driver","D:\\Deepak files\\Hybrid Framework Qshore\\Jars or Dependencies\\chromedriver.exe");
 	WebDriver driver=new ChromeDriver();	
 	driver.get("https://www.hyrtutorials.com/p/alertsdemo.html");
 	driver.manage().window().maximize();	

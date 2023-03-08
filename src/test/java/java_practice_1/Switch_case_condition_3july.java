@@ -1,8 +1,11 @@
 package java_practice_1;
+
+import java.util.Scanner;
+
 public class Switch_case_condition_3july {
 public static void main(String[] args) {
 //Consider Range Of Variable is 1to5
-int a=3;
+ int a=3;
 switch(a) {
 case 1: 
 	System.out.println("variable value is 1");
