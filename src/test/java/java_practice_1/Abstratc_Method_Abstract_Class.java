@@ -10,7 +10,7 @@ class c2 extends c1{
 		System.out.println("m1 implementation in derived class");
 	}
 }
-public class Abstratcmethod_abstractclass_11july {
+public class Abstratc_Method_Abstract_Class {
 	public static void main(String[] args) {
     c2 obj=new c2();
     obj.m1();
