@@ -11,10 +11,7 @@ public static void main(String[] args) {
 		System.out.println("Enter b value : ");
 		b=s.nextInt();
 		c=a+b;
-		System.out.println("Addition of two numbers c=a+b is : " + c);
+		System.out.println("Addition of a and b is : " + c);
         s.close();
-	
-	
-	
 }
 }

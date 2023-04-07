@@ -2,11 +2,11 @@ package java_practice_1;
 import java.util.Scanner;
 public class Scanner_Example {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
         System.out.print("Enter your name: ");
-        String name = in.nextLine();
+        String name = s.nextLine();
         System.out.println("Name is: " + name);
-        in.close();
+        s.close();
     }
 }
 //    Scanner s=new Scanner(System.in);
