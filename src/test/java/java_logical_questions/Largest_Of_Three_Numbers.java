@@ -1,6 +1,6 @@
-package java_interview_questions;
+package java_logical_questions;
 import java.util.Scanner;
-public class Largest_of_3numbers_12sep {
+public class Largest_Of_Three_Numbers {
 public static void main(String[] args) {
 Scanner s=new Scanner(System.in);
 System.out.println("Enter first number:");

@@ -1,4 +1,4 @@
-package java_interview_questions;
+package java_logical_questions;
 public class Print_starpatterns_12sep {
 public static void main(String[] args) {
 //print square start pattern
