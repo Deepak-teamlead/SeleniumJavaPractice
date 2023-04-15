@@ -6,6 +6,9 @@ public  class Practice1 {
 
 
 
+
+
+
     }
 }
 
