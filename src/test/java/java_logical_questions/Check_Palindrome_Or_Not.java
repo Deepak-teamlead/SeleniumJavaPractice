@@ -1,5 +1,5 @@
 package java_logical_questions;
-import org.testng.Assert;
+
 public class Check_Palindrome_Or_Not {
     // palindrome number is a number that remains same when its digits are reversed Example-16461
     // first revesre given number and compare with original number if both matches it is a palindrome number
