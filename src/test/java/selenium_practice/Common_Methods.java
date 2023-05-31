@@ -1,11 +1,12 @@
 package selenium_practice;
-import java.io.File;
 import java.util.ArrayList;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-public class Baseclass_Common_Methods {
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Common_Methods {
 //This is Baseclass it contains common methods
 	static WebDriver driver;
 //windowhadle method gives pagetitle by taking index number..by index numbers we can switch to a window	
@@ -36,7 +37,20 @@ public void datepicker() {
     driver.findElement(By.xpath("//table/tbody/tr/td[contains(text(),"+day+")]")).click();
 }
 //*********************************************************************************
-//This method is used to Take screenshots
+//This method is used to open url in specified browser
+
+public void browserNameandUrl(String browser,String url)throws Exception{
+	WebDriver driver = null;
+	if (browser.equalsIgnoreCase("Chrome")) {
+		driver = new ChromeDriver();
+	} else if (browser.equalsIgnoreCase("Firefox")) {
+		driver = new FirefoxDriver();
+	} else if (browser.equalsIgnoreCase("Edge")) {
+		driver = new EdgeDriver();
+	}
+	driver.get(url);
+	driver.manage().window().maximize();
+	}
 
 //*********************************************************************************
 
