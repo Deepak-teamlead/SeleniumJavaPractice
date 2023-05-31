@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 public class Execute_Script_on_Specified_Browser {
+    // static method to execute script on specified browser and specified URL
     public static void browserNameandUrl(String browser,String url)throws Exception{
         WebDriver driver = null;
         if (browser.equalsIgnoreCase("Chrome")) {
