@@ -1,35 +1,20 @@
 package selenium_practice;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
-public class Actions_Keyboard {
-//Keyboard Actions- 1.keyUp(), 2.keyDown(), 3.sendKeys()	
+public class Actions_Keyboard extends Generic_Methods{
+//Keyboard Actions
 public static void main(String[] args) throws Exception{
-	WebDriver driver=new ChromeDriver();
-	driver.get("http://www.facebook.com/");
-	driver.manage().window().maximize();	
-	WebElement email = driver.findElement(By.id("email"));
+	Generic_Methods o=new Generic_Methods();
+	o.browserNameandUrl("chrome","http://www.facebook.com/");
 
-	Actions a = new Actions(driver);
-	Action seriesOfActions = a
-		.moveToElement(email)
-		.click()
-		.keyDown(email, Keys.SHIFT)
-		.sendKeys(email, "rocky")
-		.keyUp(email, Keys.SHIFT)
-		.doubleClick(email)
-		.contextClick()
-		.build();
-		
-	seriesOfActions.perform() ;
-	
-	
+	driver.findElement(By.xpath("//input[@id='email']")).sendKeys("rock");
+    // after entering email use keyboard action TAB and ENTER
+	Actions a=new Actions(driver);
+	a.sendKeys(Keys.TAB).sendKeys("snake").build().perform();
+	a.sendKeys(Keys.ENTER).perform();
+
 	Thread.sleep(3000);
 	driver.close();
 	

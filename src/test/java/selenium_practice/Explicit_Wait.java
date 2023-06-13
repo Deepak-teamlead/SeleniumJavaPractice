@@ -1,22 +1,36 @@
 package selenium_practice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Explicit_Wait {
-//Explicit Wait	
-public static void main(String[] args) {
-	WebDriver driver=new ChromeDriver();
-driver.get("https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver");
-driver.manage().window().maximize();		
-//*****************************************************
-driver.findElement(By.xpath("//button[@id='display-other-button']")).click();     //click display button
-//WebDriverWait w=new WebDriverWait(driver,20);
-//w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='hidden']")));     //clicks display button after 10 seconds and Waits For Enabled button
-driver.findElement(By.xpath("//button[@id='hidden']")).click();                                 //clicks Enabled button    
-System.out.println(driver.getTitle());	
-System.out.println("Explicit Wait Succesfull");	
-driver.close();
+//Explicit Wait	- webdriver wait
+
+public static void main(String[] args) throws Exception{
+
+	WebDriver driver= new ChromeDriver();
+	driver.get("http://omayo.blogspot.com/");
+	driver.manage().window().maximize();
+
+	// clicking Dropdown button
+	driver.findElement(By.xpath("//button[@class='dropbtn']")).click();
+
+	// clicking Facebook link which comes after 3 seconds
+	WebElement facebooklink = driver.findElement(By.xpath("//a[text()='Facebook']"));
+	WebDriverWait w=new WebDriverWait(driver, Duration.ofSeconds(30));
+	w.until(ExpectedConditions.elementToBeClickable(facebooklink)).click();
+
+	System.out.println("Explicit Wait Succesfull");
+	driver.quit();
+
+
+
+
 	}
 
 }

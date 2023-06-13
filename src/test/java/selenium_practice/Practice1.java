@@ -1,19 +1,21 @@
 package selenium_practice;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-public class Practice1 {
-
-	public static void main(String[] args) throws Exception{
 
 
+public class Practice1 extends Generic_Methods {
+    public static void main(String[] args) throws Exception {
+
+        Generic_Methods o=new Generic_Methods();
+        o.browserNameandUrl("chrome","https://www.hyrtutorials.com/p/html-dropdown-elements-practice.html");
+
+        driver.quit();
 
 
 
+
+
+    }
 }
-}
+
 
 
 	
