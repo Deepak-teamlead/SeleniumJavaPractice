@@ -1,16 +1,11 @@
 package selenium_practice;
+public class Practice2 extends Generic_Methods {
+    public static void main(String[] args) throws Exception{
 
-import org.openqa.selenium.WebDriver;
-
-public class Practice2 {
-    static WebDriver driver;
-
-
+        Generic_Methods o = new Generic_Methods();
+        o.browserNameandUrl("chrome", "https://www.hyrtutorials.com/p/calendar-practice.html");
 
 
-
-
-
+    }
 }
-
 

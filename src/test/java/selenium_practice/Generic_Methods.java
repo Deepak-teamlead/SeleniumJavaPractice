@@ -13,6 +13,12 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
+import javax.imageio.ImageIO;
+
 public class Generic_Methods {
     //This is Baseclass it contains common methods
     static WebDriver driver;
@@ -54,7 +60,7 @@ public class Generic_Methods {
     }
 
     //******************************************************************************************
-//This method is used to switch to child window by Title name
+//This method is used to switch to child window by page Title
     public void navigateToNewWindow(String pagetitle) {
         Set<String> allwindows = driver.getWindowHandles();
         for (String handel : allwindows) {
@@ -171,19 +177,21 @@ public class Generic_Methods {
             System.out.println("unable to switch to frame");
         }
     }
+
     //******************************************
 // Mouse action-movetoelement
-    public void moveToElement(WebElement we){
-        try{
-            Actions a=new Actions(driver);
+    public void moveToElement(WebElement we) {
+        try {
+            Actions a = new Actions(driver);
             a.moveToElement(we).perform();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("unable to move to element");
         }
     }
+
     //**********************************
     //mouse action-draganddrop
-    public void dragAndDrop(WebElement source,WebElement destination) {
+    public void dragAndDrop(WebElement source, WebElement destination) {
         try {
             Actions a = new Actions(driver);
             a.dragAndDrop(source, destination).perform();
@@ -191,38 +199,74 @@ public class Generic_Methods {
             System.out.println("unable to drag and drop");
         }
     }
+
     //***********************************
     // method to double click on webelement
-    public void doubleClick(WebElement we){
+    public void doubleClick(WebElement we) {
         try {
-            Actions a=new Actions(driver);
+            Actions a = new Actions(driver);
             a.doubleClick(we).perform();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("unable to double click on webelement");
         }
     }
+
     //******************************************
-   // Taking screenshot Element level or section level based webelement xpath
-    public void screenshotElement(WebElement we,String path) throws Exception{
-        try{
+    // Taking screenshot Element level or section level based webelement xpath
+    public void screenshotElement(WebElement we, String path) throws Exception {
+        try {
             File sourcefile = we.getScreenshotAs(OutputType.FILE);
-            FileHandler.copy(sourcefile,new File(path));
-        }catch (Exception e){
+            FileHandler.copy(sourcefile, new File(path));
+        } catch (Exception e) {
             System.out.println("unable to capture Element screenshot");
         }
     }
+
     //*************************************
     //Taking screenshot visible page
-    public void screenshotVisiblePage(String path)throws Exception{
-        try{
+    public void screenshotVisiblePage(String path) throws Exception {
+        try {
             WebElement visiblepage = driver.findElement(By.xpath("//html"));
             File sourcefile = visiblepage.getScreenshotAs(OutputType.FILE);
-            FileHandler.copy(sourcefile,new File(path));
-        }catch (Exception e){
+            FileHandler.copy(sourcefile, new File(path));
+        } catch (Exception e) {
             System.out.println("unable to capture visible page screenshot");
         }
     }
+
     //***********************************************
+    // Taking screenshot of fullpage using Ashot()
+    public void screenshotFullPage(String path) throws Exception {
+        try {
+            Screenshot s = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+            ImageIO.write(s.getImage(), "PNG", new File(path));
 
+        } catch (Exception e) {
+            System.out.println("unable to capture full page screenshot");
+        }
+    }
 
+    //***********************************************
+    // Date picker with Monthly display having next/previous arrow
+    public void selectDate(String dayxpath, String month, String year, String monthTextxpath, String yearTextxpath, String nextorpreviousarrorxpath) throws Exception {
+        while (true) {
+            String monthText = driver.findElement(By.xpath(monthTextxpath)).getText();
+            String yearText = driver.findElement(By.xpath(yearTextxpath)).getText();
+            if (monthText.equalsIgnoreCase(month) && yearText.equalsIgnoreCase(year)) {
+                // clicking day
+                driver.findElement(By.xpath(dayxpath)).click();
+                break;
+            } else {
+                // clicking next or previous arrow
+                driver.findElement(By.xpath(nextorpreviousarrorxpath)).click();
+            }
+        }
+    }
+    //***********************************************
+     // Handling Date picker using Java script Executor
+    public void selectDateJavaScriptExecutor(WebElement calenderelement, String fulldate){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].setAttribute('value','"+fulldate+"');",calenderelement);
+    }
+    //***************************************
 }
