@@ -3,7 +3,6 @@ import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -13,6 +12,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
@@ -262,11 +262,45 @@ public class Generic_Methods {
             }
         }
     }
+
     //***********************************************
-     // Handling Date picker using Java script Executor
-    public void selectDateJavaScriptExecutor(WebElement calenderelement, String fulldate){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].setAttribute('value','"+fulldate+"');",calenderelement);
+    // Handling Date picker using Java script Executor
+    public void selectDateJavaScriptExecutor(WebElement calenderelement, String fulldate) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value','" + fulldate + "');", calenderelement);
+    }
+
+    //***************************************
+    // prints Text of complete table
+    public void tableText(String tableXpath) {
+        List<WebElement> cols = driver.findElements(By.xpath(tableXpath + "//th"));
+        for (WebElement col : cols) {
+            System.out.println(col.getText());
+            //********************************************************
+            List<WebElement> rows = driver.findElements(By.xpath(tableXpath + "//td"));
+            for (WebElement row : rows) {
+                System.out.println(row.getText());
+            }
+        }
+    }
+
+    //***************************************
+    // verify text in a table
+    public void verifyTableText(String tablexpath, String columnname, String rowname) {
+        List<WebElement> cols = driver.findElements(By.xpath(tablexpath + "//th"));
+        for (WebElement col : cols) {
+            if (col.getText().equalsIgnoreCase(columnname)) {
+                break;
+            }
+        }
+        List<WebElement> rows = driver.findElements(By.xpath(tablexpath + "//td"));
+        for (WebElement row : rows) {
+            if (row.getText().equalsIgnoreCase(rowname)) {
+                break;
+            }
+        }
     }
     //***************************************
 }
+
+
