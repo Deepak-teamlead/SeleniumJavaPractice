@@ -145,19 +145,17 @@ public class Generic_Methods {
     }
 
     //**************************************************
-    // prints all values from a dropdown
-    public void allValuesDropdown(WebElement we) {
-        try {
-            Select s = new Select(we);
-            List<WebElement> values = s.getOptions();
-            for (int i = 0; i < values.size(); i++) {
-                System.out.println(values.get(i).getText());
+    // verify value in a dropdown
+    public void verifyDropdownvalue(WebElement we,String value) {
+        Select s = new Select(we);
+            List<WebElement> dropdownoptions = s.getOptions();
+            for(int i=0;i<dropdownoptions.size();i++){
+                if(dropdownoptions.get(i).getText().equalsIgnoreCase(value)){
+                    System.out.println("value is present in dropdown");
+                    break;
+                }
             }
-        } catch (Exception e) {
-            System.out.println("unable to print Doprdown values");
-        }
     }
-
     //*****************************
     // switch to frame by webelement
     public void switchFrameByWebelement(WebElement we) {
@@ -286,21 +284,43 @@ public class Generic_Methods {
 
     //***************************************
     // verify text in a table
-    public void verifyTableText(String tablexpath, String columnname, String rowname) {
+    public void verifyTableText (String tablexpath, String columnname, String rowname) throws Exception {
         List<WebElement> cols = driver.findElements(By.xpath(tablexpath + "//th"));
         for (WebElement col : cols) {
+            col.getText();
             if (col.getText().equalsIgnoreCase(columnname)) {
+                System.out.println("column name is present in table");
                 break;
             }
         }
         List<WebElement> rows = driver.findElements(By.xpath(tablexpath + "//td"));
         for (WebElement row : rows) {
+            row.getText();
             if (row.getText().equalsIgnoreCase(rowname)) {
+                System.out.println("row name is present in table");
                 break;
             }
         }
     }
-    //***************************************
+    //***********************************************
+    // verify column and row size of table
+    public void verifyTableColumnRowSize (String tablexpath,int columnsize, int rowssize)throws Exception {
+        List<WebElement> cols = driver.findElements(By.xpath(tablexpath + "//th"));
+        try {
+            Assert.assertEquals(cols.size(), columnsize);
+        } catch (Exception e) {
+            System.out.println("column size is not correct");
+        }
+        List<WebElement> rows = driver.findElements(By.xpath(tablexpath + "//tr"));
+        try {
+            Assert.assertEquals(rows.size(), rowssize);
+        } catch (Exception e) {
+            System.out.println("row size is not correct");
+        }
+    }
+    //***********************************
 }
+
+
 
 
