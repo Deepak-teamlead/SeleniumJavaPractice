@@ -7,7 +7,11 @@
     <artifactId>Practice_JavaandSelenium</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.12.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -15,13 +19,11 @@
             <version>4.10.0</version>
         </dependency>
 
-
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
             <artifactId>ashot</artifactId>
             <version>1.5.4</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.testng</groupId>
@@ -30,7 +32,19 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.3</version>
+            <scope>test</scope>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

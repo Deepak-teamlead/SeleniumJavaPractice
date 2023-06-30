@@ -1,15 +1,8 @@
 package selenium_practice;
+import org.apache.poi.xssf.usermodel.*;
+import java.io.FileInputStream;
+public class Practice1 {
 
-public class Practice1 extends Generic_Methods{
-    public static void main(String[] args) throws Exception {
-
-
-
-
-
-
-
-    }
 }
 
 

@@ -3,11 +3,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
-public class Actions_Keyboard extends Generic_Methods{
+public class Actions_Keyboard extends Base_Class{
 //Keyboard Actions
 public static void main(String[] args) throws Exception{
-	Generic_Methods o=new Generic_Methods();
-	o.browserNameandUrl("chrome","http://www.facebook.com/");
+	Base_Class o=new Base_Class();
+	o.browserAndUrl("chrome","http://www.facebook.com/");
 
 	driver.findElement(By.xpath("//input[@id='email']")).sendKeys("rock");
     // after entering email use keyboard action TAB and ENTER

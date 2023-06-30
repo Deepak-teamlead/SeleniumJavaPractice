@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-public class Actions_Mouse extends Generic_Methods{
+public class Actions_Mouse extends Base_Class{
 //
 	public static void main(String[] args) throws Exception{
-		Generic_Methods o=new Generic_Methods();
-        o.browserNameandUrl("chrome","http://omayo.blogspot.com/");
+        Base_Class o=new Base_Class();
+        o.browserAndUrl("chrome","http://omayo.blogspot.com/");
         // moveToElement()
         // move to Blogs and then SeleniumByArun and click on SeleniumByArun
         WebElement Blogs = driver.findElement(By.xpath("//span[@id='blogsmenu']"));

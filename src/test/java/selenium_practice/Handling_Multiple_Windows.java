@@ -1,11 +1,11 @@
 package selenium_practice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WindowType;
-public class Handling_Multiple_Windows extends Generic_Methods {
+public class Handling_Multiple_Windows extends Base_Class {
       // Handlig Multiple windows
     public static void main(String[] args) throws Exception{
-        Generic_Methods obj=new Generic_Methods();
-        obj.browserNameandUrl("chrome","http://omayo.blogspot.com/");
+        Base_Class obj=new Base_Class();
+        obj.browserAndUrl("chrome","http://omayo.blogspot.com/");
         String parentwindow = driver.getWindowHandle();
         // clicking link opens child window
         driver.findElement(By.xpath("//a[normalize-space()='Open a popup window']")).click();

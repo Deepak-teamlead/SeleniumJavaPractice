@@ -1,7 +1,9 @@
 package selenium_practice;
 import java.io.File;
+import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,7 +21,7 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 import javax.imageio.ImageIO;
 
-public class Generic_Methods {
+public class Base_Class {
     //This is Baseclass it contains common methods
     static WebDriver driver;
 
@@ -32,7 +34,7 @@ public class Generic_Methods {
     //******************************************************************************
 
     //This method is used to open url in specified browser
-    public void browserNameandUrl(String browser, String url) throws Exception {
+    public void browserAndUrl(String browser, String url) throws Exception {
         driver = null;
         if (browser.equalsIgnoreCase("Chrome")) {
             driver = new ChromeDriver();
@@ -146,16 +148,17 @@ public class Generic_Methods {
 
     //**************************************************
     // verify value in a dropdown
-    public void verifyDropdownvalue(WebElement we,String value) {
+    public void verifyDropdownvalue(WebElement we, String value) {
         Select s = new Select(we);
-            List<WebElement> dropdownoptions = s.getOptions();
-            for(int i=0;i<dropdownoptions.size();i++){
-                if(dropdownoptions.get(i).getText().equalsIgnoreCase(value)){
-                    System.out.println("value is present in dropdown");
-                    break;
-                }
+        List<WebElement> dropdownoptions = s.getOptions();
+        for (int i = 0; i < dropdownoptions.size(); i++) {
+            if (dropdownoptions.get(i).getText().equalsIgnoreCase(value)) {
+                System.out.println("value is present in dropdown");
+                break;
             }
+        }
     }
+
     //*****************************
     // switch to frame by webelement
     public void switchFrameByWebelement(WebElement we) {
@@ -284,7 +287,7 @@ public class Generic_Methods {
 
     //***************************************
     // verify text in a table
-    public void verifyTableText (String tablexpath, String columnname, String rowname) throws Exception {
+    public void verifyTableText(String tablexpath, String columnname, String rowname) throws Exception {
         List<WebElement> cols = driver.findElements(By.xpath(tablexpath + "//th"));
         for (WebElement col : cols) {
             col.getText();
@@ -302,9 +305,10 @@ public class Generic_Methods {
             }
         }
     }
+
     //***********************************************
     // verify column and row size of table
-    public void verifyTableColumnRowSize (String tablexpath,int columnsize, int rowssize)throws Exception {
+    public void verifyTableColumnRowSize(String tablexpath, int columnsize, int rowssize) throws Exception {
         List<WebElement> cols = driver.findElements(By.xpath(tablexpath + "//th"));
         try {
             Assert.assertEquals(cols.size(), columnsize);
@@ -318,7 +322,57 @@ public class Generic_Methods {
             System.out.println("row size is not correct");
         }
     }
+
     //***********************************
+    // click on Webelement using Javascript executor
+    public void jsClick(WebElement we) {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("arguments[0].click();", we);
+        } catch (Exception e) {
+            System.out.println("unable to click Webelement");
+        }
+    }
+
+    //*************************************
+    // scroll page down to webelement using Javascript executor
+    public void scrollPageDownJs(WebElement we) {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("arguments[0].scrollIntoView(true)", we);
+
+        } catch (Exception e) {
+            System.out.println("unable to scroll to webelement");
+        }
+    }
+
+    //*************************************
+    // scroll page vertically by pixel
+    public void scrollPageVerticalJs(int verticalpixel) {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollBy(0," + verticalpixel + ")");
+
+        } catch (Exception e) {
+            System.out.println("unable to scroll page by horizontal pixel");
+        }
+    }
+
+    //*************************************
+// scroll page horizontally by pixel
+    public void scrollPageHorizontalJs(int horizontalpixel) {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollBy(" + horizontalpixel + "+," + 0);
+
+        } catch (Exception e) {
+            System.out.println("unable to scroll page by horizontal pixel");
+        }
+    }
+    //*************************************
+
+
+
 }
 
 

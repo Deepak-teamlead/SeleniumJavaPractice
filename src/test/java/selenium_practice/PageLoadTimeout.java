@@ -2,7 +2,7 @@ package selenium_practice;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
-public class PageLoadTimeout extends Generic_Methods {
+public class PageLoadTimeout {
     // page load timeout
     public static void main(String[] args) throws Exception {
         WebDriver driver= new ChromeDriver();

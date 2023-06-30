@@ -6,12 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-public class Frames2_Nestedframes extends Generic_Methods {
+public class Frames2_Nestedframes extends Base_Class {
 //Nested Frames
 public static void main(String[] args) throws Exception {
 	// Nested frames
-	Generic_Methods o=new Generic_Methods();
-	o.browserNameandUrl("chrome","https://letcode.in/frame");
+	Base_Class o=new Base_Class();
+	o.browserAndUrl("chrome","https://letcode.in/frame");
 	// switching to parent frame
 	o.switchFrameIDorName("firstFr");
 	// enter first name and last name
