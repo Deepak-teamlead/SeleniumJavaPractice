@@ -20,15 +20,17 @@ import javax.imageio.ImageIO;
 
 public class Base_Class {
     //Baseclass contains common methods
-    static WebDriver driver;
+    protected static WebDriver driver;
+
     //******************************************************************************
 //This Method Gives element count of particular Locators in a Web Page
-    public static void size(String locator) {
+    public void size(String locator) {
         System.out.println(driver.findElements(By.tagName(locator)).size());
     }
+
     //******************************************************************************
     //This method is used to open url in specified browser
-    public static void browserAndUrl(String browser, String url) throws Exception {
+    public void browserAndUrl(String browser, String url) throws Exception {
         driver = null;
         if (browser.equalsIgnoreCase("Chrome")) {
             driver = new ChromeDriver();
@@ -40,21 +42,24 @@ public class Base_Class {
         driver.get(url);
         driver.manage().window().maximize();
     }
+
     //*********************************************************************************
 // This method is used to wait till present of element
-    public static void waituntillelementpresent(WebElement Locator) {
+    public void waituntillelementpresent(WebElement Locator) {
         WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(30));
         w.until(ExpectedConditions.visibilityOf(Locator));
     }
+
     //**************************************************************************************
 //This method is used to wait untill element is clickable
-    public static void waituntillclickable(WebElement Locator) {
+    public void waituntillclickable(WebElement Locator) {
         WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(30));
         w.until(ExpectedConditions.elementToBeClickable(Locator));
     }
+
     //******************************************************************************************
 //This method is used to switch to child window by page Title
-    public static void navigateToNewWindow(String pagetitle) {
+    public void navigateToNewWindow(String pagetitle) {
         Set<String> allwindows = driver.getWindowHandles();
         for (String handel : allwindows) {
             if (driver.getTitle().equals(pagetitle)) {
@@ -65,17 +70,16 @@ public class Base_Class {
     }
     //***********************************
     // is Alert present
-    public static boolean isALertPresent() {
+    public boolean isALertPresent() {
         try {
             driver.switchTo().alert();
-            return true;
         } catch (Exception e) {
         }
-        return false;
+        return true;
     }
     //****************************
     // if alert found close it
-    public static void CloseAlert() {
+    public void CloseAlert() {
         try {
             WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(20));
             w.until(ExpectedConditions.alertIsPresent());
@@ -88,7 +92,7 @@ public class Base_Class {
     }
     //*********************************
     // select dropdown by visible text
-    public static void selectByVisibleText(WebElement We, String visibletext) {
+    public void selectByVisibleText(WebElement We, String visibletext) {
         try {
             Select s = new Select(We);
             s.selectByVisibleText(visibletext);
@@ -99,7 +103,7 @@ public class Base_Class {
     }
     //***********************************************
     // select dropdown by index
-    public static void selectByIndex(WebElement we, int index) {
+    public void selectByIndex(WebElement we, int index) {
         try {
             Select s = new Select(we);
             s.selectByIndex(index);
@@ -121,7 +125,7 @@ public class Base_Class {
     }
     //***********************************
     // first selected option from dropdown
-    public static void firstSelectedDropdown(WebElement we) {
+    public void firstSelectedDropdown(WebElement we) {
         try {
             Select s = new Select(we);
             String firstselection = s.getFirstSelectedOption().getText();
@@ -132,7 +136,7 @@ public class Base_Class {
     }
     //**************************************************
     // verify value in a dropdown
-    public static void verifyDropdownvalue(WebElement we, String value) {
+    public void verifyDropdownvalue(WebElement we, String value) {
         Select s = new Select(we);
         List<WebElement> dropdownoptions = s.getOptions();
         for (int i = 0; i < dropdownoptions.size(); i++) {
@@ -144,7 +148,7 @@ public class Base_Class {
     }
     //*****************************
     // switch to frame by webelement
-    public static void switchFrameByWebelement(WebElement we) {
+    public void switchFrameByWebelement(WebElement we) {
         try {
             driver.switchTo().frame(we);
         } catch (Exception e) {
@@ -153,7 +157,7 @@ public class Base_Class {
     }
     //**************************************
     //switch to frame by idorname
-    public static void switchFrameIDorName(String idorName) {
+    public void switchFrameIDorName(String idorName) {
         try {
             driver.switchTo().frame(idorName);
         } catch (Exception e) {
@@ -162,7 +166,7 @@ public class Base_Class {
     }
     //******************************************
 // Mouse action-movetoelement
-    public static void moveToElement(WebElement we) {
+    public void moveToElement(WebElement we) {
         try {
             Actions a = new Actions(driver);
             a.moveToElement(we).perform();
@@ -172,7 +176,7 @@ public class Base_Class {
     }
     //**********************************
     //mouse action-draganddrop
-    public static void dragAndDrop(WebElement source, WebElement destination) {
+    public void dragAndDrop(WebElement source, WebElement destination) {
         try {
             Actions a = new Actions(driver);
             a.dragAndDrop(source, destination).perform();
@@ -182,7 +186,7 @@ public class Base_Class {
     }
     //***********************************
     // method to double click on webelement
-    public static void doubleClick(WebElement we) {
+    public void doubleClick(WebElement we) {
         try {
             Actions a = new Actions(driver);
             a.doubleClick(we).perform();
@@ -192,7 +196,7 @@ public class Base_Class {
     }
     //******************************************
     // Taking screenshot Element level or section level based webelement xpath
-    public static void screenshotElement(WebElement we, String path) throws Exception {
+    public void screenshotElement(WebElement we, String path) throws Exception {
         try {
             File sourcefile = we.getScreenshotAs(OutputType.FILE);
             FileHandler.copy(sourcefile, new File(path));
@@ -202,7 +206,7 @@ public class Base_Class {
     }
     //*************************************
     //Taking screenshot visible page
-    public static void screenshotVisiblePage(String path) throws Exception {
+    public void screenshotVisiblePage(String path) throws Exception {
         try {
             WebElement visiblepage = driver.findElement(By.xpath("//html"));
             File sourcefile = visiblepage.getScreenshotAs(OutputType.FILE);
@@ -213,7 +217,7 @@ public class Base_Class {
     }
     //***********************************************
     // Taking screenshot of fullpage using Ashot()
-    public static void screenshotFullPage(String path) throws Exception {
+    public void screenshotFullPage(String path) throws Exception {
         try {
             Screenshot s = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
             ImageIO.write(s.getImage(), "PNG", new File(path));
@@ -224,7 +228,7 @@ public class Base_Class {
     }
     //***********************************************
     // Date picker with Monthly display having next/previous arrow
-    public static void selectDate(String dayxpath, String month, String year, String monthTextxpath, String yearTextxpath, String nextorpreviousarrorxpath) throws Exception {
+    public void selectDate(String dayxpath, String month, String year, String monthTextxpath, String yearTextxpath, String nextorpreviousarrorxpath) throws Exception {
         while (true) {
             String monthText = driver.findElement(By.xpath(monthTextxpath)).getText();
             String yearText = driver.findElement(By.xpath(yearTextxpath)).getText();
@@ -240,13 +244,13 @@ public class Base_Class {
     }
     //***********************************************
     // Handling Date picker using Java script Executor
-    public static void selectDateJavaScriptExecutor(WebElement calenderelement, String fulldate) {
+    public void selectDateJavaScriptExecutor(WebElement calenderelement, String fulldate) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].setAttribute('value','" + fulldate + "');", calenderelement);
     }
     //***************************************
     // prints Text of complete table
-    public static void tableText(String tableXpath) {
+    public void tableText(String tableXpath) {
         List<WebElement> cols = driver.findElements(By.xpath(tableXpath + "//th"));
         for (WebElement col : cols) {
             System.out.println(col.getText());
@@ -259,7 +263,7 @@ public class Base_Class {
     }
     //***************************************
     // verify text in a table
-    public static void verifyTableText(String tablexpath, String columnname, String rowname) throws Exception {
+    public void verifyTableText(String tablexpath, String columnname, String rowname) throws Exception {
         List<WebElement> cols = driver.findElements(By.xpath(tablexpath + "//th"));
         for (WebElement col : cols) {
             col.getText();
@@ -279,7 +283,7 @@ public class Base_Class {
     }
     //***********************************************
     // verify column and row size of table
-    public static void verifyTableColumnRowSize(String tablexpath, int columnsize, int rowssize) throws Exception {
+    public void verifyTableColumnRowSize(String tablexpath, int columnsize, int rowssize) throws Exception {
         List<WebElement> cols = driver.findElements(By.xpath(tablexpath + "//th"));
         try {
             Assert.assertEquals(cols.size(), columnsize);
@@ -295,7 +299,7 @@ public class Base_Class {
     }
     //***********************************
     // click on Webelement using Javascript executor
-    public static void jsClick(WebElement we) {
+    public void jsClick(WebElement we) {
         try {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("arguments[0].click();", we);
@@ -305,7 +309,7 @@ public class Base_Class {
     }
     //*************************************
     // scroll page down to webelement using Javascript executor
-    public static void scrollPageDownJs(WebElement we) {
+    public void scrollPageDownJs(WebElement we) {
         try {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("arguments[0].scrollIntoView(true)", we);
@@ -316,7 +320,7 @@ public class Base_Class {
     }
     //*************************************
     // scroll page vertically by pixel
-    public static void scrollPageVerticalJs(int verticalpixel) {
+    public void scrollPageVerticalJs(int verticalpixel) {
         try {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("window.scrollBy(0," + verticalpixel + ")");
@@ -327,7 +331,7 @@ public class Base_Class {
     }
     //*************************************
 // scroll page horizontally by pixel
-    public static void scrollPageHorizontalJs(int horizontalpixel) {
+    public void scrollPageHorizontalJs(int horizontalpixel) {
         try {
             JavascriptExecutor jse = (JavascriptExecutor) driver;
             jse.executeScript("window.scrollBy(" + horizontalpixel + "+," + 0);
