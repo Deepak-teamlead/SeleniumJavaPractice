@@ -17,7 +17,7 @@ if(k<l) {
 else {
 	System.out.println("Condition false...K is Greater");
 }
-//3)If-else-If or Nested-If Condition
+//3) Nested-If Condition
 int x=100; int y=200;
 if (x==100) {
 	if(y==200) {

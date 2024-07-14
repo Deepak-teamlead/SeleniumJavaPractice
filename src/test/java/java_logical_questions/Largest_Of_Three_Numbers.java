@@ -1,6 +1,7 @@
 package java_logical_questions;
 import java.util.Scanner;
 public class Largest_Of_Three_Numbers {
+	// Java Program to find Largest of three numbers using if-else condition
 public static void main(String[] args) {
 Scanner s=new Scanner(System.in);
 System.out.println("Enter first number:");
