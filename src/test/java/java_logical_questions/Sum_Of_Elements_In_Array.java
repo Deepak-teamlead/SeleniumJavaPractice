@@ -1,5 +1,6 @@
 package java_logical_questions;
 public class Sum_Of_Elements_In_Array {
+    // sum of elements in array
     public static void main(String[] args) {
         int a[]={1,2,3};
         int sum=0;

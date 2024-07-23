@@ -1,16 +1,19 @@
 package java_logical_questions;
 public class Search_Element_In_Array {
+    // searching an element in array
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] a = {10, 20, 30, 40, 50, 60, 70, 80, 90};
         // printing element
         for (int i = 0; i < a.length; i++) {
-            if (a[i] == 5) {
-                System.out.println("element found at :" + i);
-                break;
+            if (a[i] == 50) {
+                System.out.println("element is present in array :" + a[i]);
             }
-            }
-        System.out.println("Element not found");
         }
+    }
 }
+
+
+
+
 
 
