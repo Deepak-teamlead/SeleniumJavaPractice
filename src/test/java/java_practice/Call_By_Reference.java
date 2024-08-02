@@ -1,21 +1,18 @@
 package java_practice;
 public class Call_By_Reference {
     // call by reference
-    public static int update( int number ){
+    public int update( int x ){
         // increments number.
-        number++;
-        return number;
+        x++;
+        return x;
     }
     public static void main(String[] args) {
-        int number = 1;
+         int x = 1;
         // printing before update.
-        System.out.println("number = " + number);
-        // update function returns a value.
-        number = update(number);
-        // printing after update.
-        System.out.println("number = " + number);
+        System.out.println("before call by reference number = " + x);
+        // update method returns a value.
+        Call_By_Reference obj=new Call_By_Reference();
+        System.out.println("after call by reference number = " +obj.update(x));
     }
-
-
 }
 

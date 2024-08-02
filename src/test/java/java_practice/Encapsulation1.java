@@ -1,16 +1,28 @@
 package java_practice;
 public class Encapsulation1 {
-	private int a;
-	public static void main(String[] args) {
-		
-}
-	public int showvalue() {         //renamed auto created getter method
-		return a;
-	}
-	public void givevalue(int a) {    //renamed auto created setter method
+	// Encapsulation
+	private int empid;
+	private String empname;
+	private int empsalary;
 
-		this.a = a;
+	// below are setter and getter methods for above private varaibles which are created by intelij feature
+	public void setEmpid(int empid) {
+		this.empid = empid;
 	}
-	
+	public int getEmpid() {
+		return empid;
+	}
+	public void setEmpname(String empname) {
+		this.empname = empname;
+	}
+	public String getEmpname() {
+		return empname;
+	}
+	public void setEmpsalary(int empsalary) {
+		this.empsalary = empsalary;
+	}
+	public int getEmpsalary() {
+		return empsalary;
+	}
 }
 

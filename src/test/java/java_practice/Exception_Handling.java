@@ -3,27 +3,33 @@ import java.util.Scanner;
 public class Exception_Handling {
 //try, catch and finally blocks	
 public static void main(String[] args) {
-int a; int b; int c;
-Scanner s=new Scanner(System.in);
-System.out.println("enter a value :");
-a=s.nextInt();
-System.out.println("enter b value :");
-b=s.nextInt();
-/*try {
-c=a/b;
-System.out.println("Division of a and b is : "+ c);
-}catch(Exception e) {
-	System.out.println(e);
-}*/
-try {
-c=a/b;
-System.out.println("Division of a and b is : "+ c);
-}
-finally {
-	System.out.println("This Is Finally Block");
-}
-s.close();	
-System.out.println("***************Last Line Of Program******************");	
+
+	Scanner sc = new Scanner(System.in);
+	System.out.println("enter number x");
+	int x = sc.nextInt();
+	System.out.println("enter number y");
+	int y = sc.nextInt();
+	try {
+		System.out.println("divison is : " + x / y);
+	} catch (Exception e) {
+		System.out.println("in catch block and exception is :" + e.getMessage());
+	} finally {                                               // finally is optional block
+		System.out.println("This Is Finally Block");
+	}
+	System.out.println("last line of program");
+
+	/*String s=null;
+	try{
+		System.out.println("length is: "+s.length());
+	}catch(Exception e){
+		System.out.println("in catch block and exception is :"+e.getMessage());
+	}
+	finally {
+		System.out.println("This Is Finally Block");
+	}
+	System.out.println("last line of program");*/
+
+	sc.close();
 
 }
 }
